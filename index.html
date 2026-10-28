@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de estudio Segundo Parcial</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.5;
+      background-color: #1a202c;
+      color: #1a202c;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 4px solid #2b6cb0;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #2b6cb0;
+      font-weight: bold;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #edf2f7;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-bar select {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: 2px solid #cbd5e0;
+      background-color: #ffffff;
+      max-width: 100%;
+    }
+
+    .counter {
+      font-weight: bold;
+      color: #2d3748;
+    }
+
+    .badge-theme {
+      display: inline-block;
+      background-color: #ebf8ff;
+      color: #2b6cb0;
+      border: 2px solid #3182ce;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .question-card {
+      background-color: #f7fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .question-text {
+      font-size: 26px;
+      font-weight: bold;
+      color: #1a202c;
+      margin-bottom: 20px;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .option-btn {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      text-align: left;
+      padding: 16px 20px;
+      border: 3px solid #cbd5e0;
+      background-color: #ffffff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #2d3748;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      background-color: #e2e8f0;
+      border-color: #a0aec0;
+    }
+
+    .option-btn.correct {
+      background-color: #c6f6d5 !important;
+      border-color: #38a169 !important;
+      color: #22543d !important;
+      font-weight: bold;
+    }
+
+    .option-btn.incorrect {
+      background-color: #fed7d7 !important;
+      border-color: #e53e3e !important;
+      color: #742a2a !important;
+      font-weight: bold;
+    }
+
+    .procedure-box {
+      margin-top: 25px;
+      padding: 20px 25px;
+      border-radius: 12px;
+      border-left: 8px solid #3182ce;
+      background-color: #ebf8ff;
+      display: none;
+    }
+
+    .procedure-title {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2b6cb0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .procedure-content {
+      font-size: 22px;
+      color: #2d3748;
+      white-space: pre-line;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .btn-action {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: #3182ce;
+      color: #ffffff;
+      transition: background-color 0.2s;
+      flex: 1;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .btn-action:hover:not(:disabled) {
+      background-color: #2b6cb0;
+    }
+
+    .btn-action:disabled {
+      background-color: #a0aec0;
+      cursor: not-allowed;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 20px;
+    }
+
+    .data-table th, .data-table td {
+      border: 2px solid #cbd5e0;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .data-table th {
+      background-color: #e2e8f0;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 20px;
+        padding: 10px;
+      }
+      .container {
+        padding: 15px;
+      }
+      .question-text {
+        font-size: 22px;
+      }
+      .option-btn {
+        font-size: 20px;
+        padding: 12px;
+      }
+      .btn-action {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Guia de estudio Segundo Parcial</h1>
+  </header>
+
+  <div class="nav-bar">
+    <div>
+      <label for="exercise-select"><strong>Ejercicio:</strong> </label>
+      <select id="exercise-select" onchange="jumpToExercise(this.value)"></select>
+    </div>
+    <div class="counter" id="counter-text">Ejercicio 1 de 45</div>
+  </div>
+
+  <div class="question-card">
+    <div class="badge-theme" id="theme-badge">Tema</div>
+    <div class="question-text" id="question-text">Cargando pregunta...</div>
+    <div class="options-grid" id="options-container"></div>
+
+    <div class="procedure-box" id="procedure-box">
+      <div class="procedure-title">
+        <span>📘</span> Procedimiento y Explicación Paso a Paso:
+      </div>
+      <div class="procedure-content" id="procedure-content"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn-action" id="btn-prev" onclick="navigate(-1)">⬅️ Atrás</button>
+    <button class="btn-action" id="btn-next" onclick="navigate(1)">Siguiente ➡️</button>
+  </div>
+</div>
+
+<script>
+  const exercises = [
+    // 1. Moda
+    {
+      theme: "Medidas de Tendencia Central (Moda)",
+      question: "1. ¿Cuál es la medida de tendencia central que representa el valor con mayor frecuencia en un conjunto de datos?",
+      options: ["a) Varianza", "b) Mediana", "c) Moda", "d) Rango"],
+      correct: 2,
+      procedure: "• Concepto: La Moda es la medida de tendencia central que se define como el dato o valor que ocurre con mayor frecuencia (el que más se repite) en un conjunto de datos.\n• Varianza y Rango son medidas de dispersión.\n• La Mediana es el valor central al ordenar los datos."
+    },
+    {
+      theme: "Medidas de Tendencia Central (Moda)",
+      question: "1 (Var. 2). Si en una encuesta sobre edades el número '15' es el que más veces respondieron los alumnos, ¿a qué medida corresponde?",
+      options: ["a) Rango", "b) Moda", "c) Media", "d) Varianza"],
+      correct: 1,
+      procedure: "• El valor que aparece con la máxima frecuencia o cantidad de repeticiones corresponde a la MODA.\n• Por lo tanto, el 15 es la moda del grupo."
+    },
+    {
+      theme: "Medidas de Tendencia Central (Moda)",
+      question: "1 (Var. 3). En la serie de datos: 5, 8, 8, 8, 10, 12, el valor 8 es considerado:",
+      options: ["a) La Media", "b) El Rango", "c) La Moda", "d) La Varianza"],
+      correct: 2,
+      procedure: "• El número 8 aparece 3 veces, mientras que los demás sólo aparecen 1 vez.\n• El valor con mayor frecuencia absoluta es la MODA."
+    },
+
+    // 2. Media
+    {
+      theme: "Medidas de Tendencia Central (Media)",
+      question: "2. ¿Cuál es la medida de tendencia central que representa el promedio aritmético de una serie de datos?",
+      options: ["a) Media", "b) Estadística", "c) Moda", "d) Rango"],
+      correct: 0,
+      procedure: "• Concepto: La Media (o media aritmética) es la suma de todos los valores dividida entre el número total de elementos (x̄ = Σx / n).\n• Es comúnmente llamada 'promedio'."
+    },
+    {
+      theme: "Medidas de Tendencia Central (Media)",
+      question: "2 (Var. 2). Al sumar las calificaciones de un alumno y dividirlas entre la cantidad de materias evaluadas, se obtiene:",
+      options: ["a) La Moda", "b) El Rango", "c) La Media", "d) La Muestra"],
+      correct: 2,
+      procedure: "• Procedimiento: Suma total de valores ÷ Cantidad de elementos.\n• Esta operación corresponde exactamente a la definición de la Media Aritmética."
+    },
+    {
+      theme: "Medidas de Tendencia Central (Media)",
+      question: "2 (Var. 3). Para los valores 4, 6, 8, la suma es 18 y al dividir entre 3 datos resulta 6. ¿Cómo se le llama a este resultado?",
+      options: ["a) Media", "b) Varianza", "c) Espacio muestral", "d) Moda"],
+      correct: 0,
+      procedure: "• x̄ = (4 + 6 + 8) / 3 = 18 / 3 = 6.\n• Representa el promedio aritmético de los datos, es decir, la MEDIA."
+    },
+
+    // 3. Población
+    {
+      theme: "Conceptos de Estadística (Población)",
+      question: "3. Es el conjunto total de elementos, individuos, objetos o eventos que comparten una característica común:",
+      options: ["a) Población", "b) Muestra", "c) Promedio", "d) Rango"],
+      correct: 0,
+      procedure: "• Definición: POBLACIÓN es la totalidad de los elementos o individuos sobre los cuales se realiza un estudio estadístico.\n• La Muestra es solo un subconjunto representativo de la población."
+    },
+    {
+      theme: "Conceptos de Estadística (Población)",
+      question: "3 (Var. 2). Si se desea estudiar el rendimiento académico de TODOS los estudiantes inscritos en una universidad, este grupo total es:",
+      options: ["a) Una muestra", "b) Una población", "c) Un experimento", "d) Un rango"],
+      correct: 1,
+      procedure: "• Al abarcar la TOTALIDAD de la comunidad objeto de estudio sin omitir ninguno, el conjunto completo recibe el nombre de POBLACIÓN."
+    },
+    {
+      theme: "Conceptos de Estadística (Población)",
+      question: "3 (Var. 3). La diferencia principal entre Población y Muestra estriba en que la Población representa:",
+      options: ["a) Solo una parte del grupo", "b) El conjunto total de elementos", "c) La resta del máximo y mínimo", "d) El dato central"],
+      correct: 1,
+      procedure: "• La Población abarca el 100% (totalidad) de elementos objeto del análisis, mientras que la Muestra es un subconjunto de ella."
+    },
+
+    // 4. Espacio Muestral
+    {
+      theme: "Probabilidad (Espacio Muestral)",
+      question: "4. ¿A qué se refiere con 'El conjunto de todos los resultados posibles de un experimento'?",
+      options: ["a) Espacio muestral", "b) Experimento", "c) Probabilidad", "d) Estadística"],
+      correct: 0,
+      procedure: "• Definición: El ESPACIO MUESTRAL (denotado comúnmente por S o Ω) es el conjunto formado por todos y cada uno de los resultados posibles de un experimento aleatorio.\n• Ejemplo: Al lanzar un dado, S = {1, 2, 3, 4, 5, 6}."
+    },
+    {
+      theme: "Probabilidad (Espacio Muestral)",
+      question: "4 (Var. 2). Al lanzar una moneda al aire, los resultados posibles son {Águila, Sol}. Este conjunto se denomina:",
+      options: ["a) Promedio", "b) Espacio muestral", "c) Evento imposible", "d) Frecuencia"],
+      correct: 1,
+      procedure: "• Como engloba la totalidad de salidas posibles del evento ({Águila, Sol}), se trata del ESPACIO MUESTRAL."
+    },
+    {
+      theme: "Probabilidad (Espacio Muestral)",
+      question: "4 (Var. 3). Si un experimento consiste en girar una ruleta numerada del 1 al 10, el conjunto {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} constituye:",
+      options: ["a) La Población de la muestra", "b) La Varianza", "c) El Espacio Muestral", "d) La Moda"],
+      correct: 2,
+      procedure: "• Es la lista completa de opciones o resultados viables del experimento aleatorio = ESPACIO MUESTRAL."
+    },
+
+    // 5. Probabilidad
+    {
+      theme: "Probabilidad (Concepto)",
+      question: "5. Es una medida numérica que indica la posibilidad de que ocurra un evento o suceso determinado:",
+      options: ["a) Estadística", "b) Probabilidad", "c) Experimento", "d) Media"],
+      correct: 1,
+      procedure: "• Concepto: La PROBABILIDAD cuantifica qué tan viable es que ocurra un evento (entre 0 o 0% e 1 o 100%).\n• Fórmula básica: P(A) = Casos Favorables / Casos Totales."
+    },
+    {
+      theme: "Probabilidad (Concepto)",
+      question: "5 (Var. 2). Un valor numérico comprendido entre 0 y 1 que mide la certidumbre de ocurrencia de un fenómeno es:",
+      options: ["a) El Rango", "b) La Probabilidad", "c) El Monomio", "d) La Mediana"],
+      correct: 1,
+      procedure: "• Corresponde a la definición formal de PROBABILIDAD."
+    },
+    {
+      theme: "Probabilidad (Concepto)",
+      question: "5 (Var. 3). Decir que existe un 0.50 (o 50%) de posibilidad de obtener 'cara' al lanzar una moneda expresa una:",
+      options: ["a) Mediana", "b) Probabilidad", "c) Simplificación", "d) Población"],
+      correct: 1,
+      procedure: "• Expresa la medida numérica de posibilidad de ocurrencia = PROBABILIDAD."
+    },
+
+    // 6. Urna / Probabilidad Clásica
+    {
+      theme: "Probabilidad Clásica (Urna)",
+      question: "6. Una urna contiene 6 bolas verdes, 4 blancas, 8 azules y 10 amarillas (Total = 28). Si se extrae una al azar, ¿cuál es la probabilidad de que NO sea verde? (Reducida)",
+      options: ["a) 11/14", "b) 6/28", "c) 20/28", "d) 12/14"],
+      correct: 0,
+      procedure: "1) Sumar total de bolas: 6 + 4 + 8 + 10 = 28 bolas totales.\n2) Bolas que NO son verdes: 4 blancas + 8 azules + 10 amarillas = 22 bolas.\n3) Aplicar P(No Verde) = 22 / 28.\n4) Simplificar la fracción dividiendo entre 2: (22÷2) / (28÷2) = 11/14."
+    },
+    {
+      theme: "Probabilidad Clásica (Urna)",
+      question: "6 (Var. 2). De la misma urna (6 verdes, 4 blancas, 8 azules y 10 amarillas = 28 totales), ¿cuál es la probabilidad de que NO sea azul? (Reducida)",
+      options: ["a) 11/14", "b) 6/28", "c) 5/7", "d) 10/14"],
+      correct: 2,
+      procedure: "1) Total de bolas = 28.\n2) Bolas que NO son azules: 28 - 8 azules = 20 bolas (6 verdes + 4 blancas + 10 amarillas).\n3) P(No Azul) = 20 / 28.\n4) Simplificar sacando cuarta parte (÷4): (20÷4) / (28÷4) = 5/7."
+    },
+    {
+      theme: "Probabilidad Clásica (Urna)",
+      question: "6 (Var. 3). En la urna con 28 bolas (6 verdes, 4 blancas, 8 azules, 10 amarillas), ¿cuál es la probabilidad de extraer una bola Verde? (Reducida)",
+      options: ["a) 3/14", "b) 6/28", "c) 1/4", "d) 3/7"],
+      correct: 0,
+      procedure: "1) Casos favorables (Verdes) = 6.\n2) Casos totales = 28.\n3) P(Verde) = 6 / 28.\n4) Simplificar dividiendo entre 2: (6÷2) / (28÷2) = 3/14."
+    },
+
+    // 7. Simplificación de Fracciones Algebraicas
+    {
+      theme: "Leyes de Exponentes (Reducción de Fracción)",
+      question: "7. Reduce la siguiente fracción algebraica: (32 p⁵ q⁴) / (-8 p³ q)",
+      options: ["a) 8 p⁸ q⁵", "b) 4 p⁸ q⁵", "c) -4 p² q³", "d) -8 p³ q²"],
+      correct: 2,
+      procedure: "1) Ley de signos y coeficientes: 32 / (-8) = -4.\n2) Ley de exponentes para la misma base en división (se restan exponentes):\n   • Para p: p^(5 - 3) = p²\n   • Para q: q^(4 - 1) = q³\n3) Resultado final: -4 p² q³."
+    },
+    {
+      theme: "Leyes de Exponentes (Reducción de Fracción)",
+      question: "7 (Var. 2). Reduce la siguiente fracción algebraica: (56 p⁵ q⁴) / (-7 p³ q)",
+      options: ["a) 8 p⁸ q⁵", "b) 9 p⁸ q⁵", "c) -9 p² q³", "d) -8 p² q³"],
+      correct: 3,
+      procedure: "1) Dividir coeficientes: 56 / (-7) = -8.\n2) Restar exponentes de bases iguales:\n   • Para p: p^(5 - 3) = p²\n   • Para q: q^(4 - 1) = q³\n3) Resultado final: -8 p² q³."
+    },
+    {
+      theme: "Leyes de Exponentes (Reducción de Fracción)",
+      question: "7 (Var. 3). Reduce la fracción algebraica: (-40 x⁶ y⁴) / (5 x² y²)",
+      options: ["a) -8 x⁴ y²", "b) 8 x⁸ y⁶", "c) -8 x³ y²", "d) -35 x⁴ y²"],
+      correct: 0,
+      procedure: "1) Coeficientes: -40 / 5 = -8.\n2) Exponentes:\n   • x^(6 - 2) = x⁴\n   • y^(4 - 2) = y²\n3) Resultado: -8 x⁴ y²."
+    },
+
+    // 8. Lenguaje Algebraico
+    {
+      theme: "Lenguaje Algebraico",
+      question: "8. 'El cuadrado de un número, más el triple del mismo número, equivale a doce.', se traduce algebraicamente como:",
+      options: ["a) 2x + 3x = 12", "b) x² + 3x = 12", "c) x² + x³ = 12", "d) (x² + x³)12"],
+      correct: 1,
+      procedure: "Traducción paso a paso:\n• 'El cuadrado de un número': x²\n• 'más (+)': +\n• 'el triple del mismo número': 3x\n• 'equivale a doce': = 12\nEcuación resultante: x² + 3x = 12."
+    },
+    {
+      theme: "Lenguaje Algebraico",
+      question: "8 (Var. 2). 'El cuadrado de un número, más el cubo del mismo número, equivale a doce.', se traduce como:",
+      options: ["a) 2x + 3x = 12", "b) x² + 3x = 12", "c) x² + x³ = 12", "d) (x² + x³)12"],
+      correct: 2,
+      procedure: "Traducción paso a paso:\n• 'El cuadrado de un número': x²\n• 'más (+)': +\n• 'el cubo del mismo número': x³\n• 'equivale a doce': = 12\nEcuación resultante: x² + x³ = 12."
+    },
+    {
+      theme: "Lenguaje Algebraico",
+      question: "8 (Var. 3). 'El doble de un número, más el cuadrado del mismo número, es igual a quince.', se traduce como:",
+      options: ["a) 2x + x² = 15", "b) x² + 3x = 15", "c) 2x + 2x = 15", "d) x² + 15 = 2x"],
+      correct: 0,
+      procedure: "• 'El doble de un número': 2x\n• 'más (+)': +\n• 'el cuadrado del mismo número': x²\n• 'es igual a catorce/quince': = 15\nEcuación: 2x + x² = 15."
+    },
+
+    // 9. Clasificación de Expresiones Algebraicas
+    {
+      theme: "Clasificación de Expresiones Algebraicas",
+      question: "9. La siguiente expresión algebraica: 12 m⁵ n² - 27 xmn + 45 m³ x², es un:",
+      options: ["a) Monomio", "b) Binomio", "c) Trinomio", "d) Diferencia de binomios"],
+      correct: 2,
+      procedure: "1) Identificar los términos separados por signos '+' o '-':\n   Término 1: 12 m⁵ n²\n   Término 2: -27 xmn\n   Término 3: +45 m³ x²\n2) Al constar de exactamente 3 términos algebraicos, recibe el nombre de TRINOMIO."
+    },
+    {
+      theme: "Clasificación de Expresiones Algebraicas",
+      question: "9 (Var. 2). La expresión algebraica: 10 m⁵ n² - 30 xmn + 45 m³ x², se clasifica como:",
+      options: ["a) Trinomio", "b) Binomio", "c) Monomio", "d) Diferencia de binomios"],
+      correct: 0,
+      procedure: "• Cuenta con 3 términos distintos (10 m⁵ n², -30 xmn, +45 m³ x²).\n• Toda expresión con 3 términos se clasifica como TRINOMIO."
+    },
+    {
+      theme: "Clasificación de Expresiones Algebraicas",
+      question: "9 (Var. 3). ¿Cómo se clasifica la expresión: 7 a² b - 14 ab ?",
+      options: ["a) Monomio", "b) Binomio", "c) Trinomio", "d) Polinomio de 4 términos"],
+      correct: 1,
+      procedure: "• Consta de exactamente 2 términos separados por un signo menos (7 a² b  y  -14 ab).\n• Por lo tanto, se clasifica como BINOMIO."
+    },
+
+    // 10. Términos Semejantes
+    {
+      theme: "Términos Semejantes",
+      question: "10. Analiza los pares de términos y determina si son semejantes:\n1) 7m³ y 3m⁷\n2) x²y y 24x²y",
+      options: [
+        "a) 1: NO (distinto exponente), 2: SÍ (mismas variables e iguales exponentes)",
+        "b) 1: SÍ, 2: NO",
+        "c) Ambos son semejantes",
+        "d) Ninguno es semejante"
+      ],
+      correct: 0,
+      procedure: "Regla de Términos Semejantes: Deben tener exactamente las mismas letras (base) elevadas a los mismos exponentes.\n• Par 1 (7m³ y 3m⁷): NO son semejantes porque los exponentes son distintos (3 y 7).\n• Par 2 (x²y y 24x²y): SÍ son semejantes porque ambos tienen x² y y¹."
+    },
+    {
+      theme: "Términos Semejantes",
+      question: "10 (Var. 2). ¿Por qué los términos 5a²b³ y -12a²b³ SÍ son semejantes?",
+      options: [
+        "a) Tienen el mismo coeficiente numérico",
+        "b) Tienen las mismas variables con sus respectivos exponentes iguales",
+        "c) Ambos son positivos",
+        "d) Tienen diferente parte literal"
+      ],
+      correct: 1,
+      procedure: "• La condición estricta para ser semejantes es tener la misma parte literal (variables e iguales exponentes, a² y b³ en ambos), independientemente del coeficiente numérico o signo."
+    },
+    {
+      theme: "Términos Semejantes",
+      question: "10 (Var. 3). ¿Son semejantes los términos 8x³y² y 8x²y³?",
+      options: [
+        "a) SÍ, porque los números son iguales",
+        "b) NO, porque el exponente de x y de y cambia entre los términos",
+        "c) SÍ, porque tienen las letras x e y",
+        "d) SÍ, porque ambos suman grado 5"
+      ],
+      correct: 1,
+      procedure: "• En el primero 'x' está al cubo (x³) y en el segundo 'x' está al cuadrado (x²).\n• Al no coincidir el exponente de cada variable respectiva, NO son semejantes."
+    },
+
+    // 11. Problema de Datos Venta (Media, Mediana, Moda)
+    {
+      theme: "Estadística Aplicada (Cálculo de Media, Mediana y Moda)",
+      question: "11. Laura anotó las ventas de 10 días: 41, 30, 51, 22, 45, 19, 28, 25, 28, 39.\nCalcula las medidas de tendencia central.",
+      options: [
+        "a) Media = 32.8, Mediana = 29, Moda = 28",
+        "b) Media = 30.0, Mediana = 28, Moda = 28",
+        "c) Media = 32.8, Mediana = 28, Moda = 30",
+        "d) Media = 35.1, Mediana = 30, Moda = 51"
+      ],
+      correct: 0,
+      procedure: "1) Ordenar los 10 datos de menor a mayor:\n   19, 22, 25, 28, 28, 30, 39, 41, 45, 51\n2) MEDIA (x̄):\n   Suma = 19+22+25+28+28+30+39+41+45+51 = 328\n   x̄ = 328 / 10 = 32.8\n3) MEDIANA:\n   Al ser 10 datos (par), es el promedio de los valores en posición 5 y 6:\n   Posición 5 = 28, Posición 6 = 30 -> Mediana = (28 + 30) / 2 = 29\n4) MODA:\n   El dato que más se repite es 28 (aparece 2 veces)."
+    },
+    {
+      theme: "Estadística Aplicada (Cálculo de Media, Mediana y Moda)",
+      question: "11 (Var. 2). Ventas de 10 días: 45, 18, 28, 31, 23, 19, 36, 28, 55, 39.\nCalcula Media, Mediana y Moda.",
+      options: [
+        "a) Media = 32.2, Mediana = 29.5, Moda = 28",
+        "b) Media = 32.2, Mediana = 28, Moda = 31",
+        "c) Media = 30.0, Mediana = 28, Moda = 28",
+        "d) Media = 35.0, Mediana = 30, Moda = 55"
+      ],
+      correct: 0,
+      procedure: "1) Datos ordenados:\n   18, 19, 23, 28, 28, 31, 36, 39, 45, 55\n2) MEDIA (x̄):\n   Suma = 18+19+23+28+28+31+36+39+45+55 = 322\n   x̄ = 322 / 10 = 32.2\n3) MEDIANA:\n   Promedio de posiciones 5ª y 6ª: (28 + 31) / 2 = 59 / 2 = 29.5\n4) MODA:\n   El valor más frecuente es 28."
+    },
+    {
+      theme: "Estadística Aplicada (Cálculo de Media, Mediana y Moda)",
+      question: "11 (Var. 3). Considera los 5 datos de ventas: 10, 12, 12, 16, 20. Halla la Media, Mediana y Moda.",
+      options: [
+        "a) Media = 14, Mediana = 12, Moda = 12",
+        "b) Media = 12, Mediana = 14, Moda = 12",
+        "c) Media = 14, Mediana = 16, Moda = 20",
+        "d) Media = 15, Mediana = 12, Moda = 16"
+      ],
+      correct: 0,
+      procedure: "1) Datos ya ordenados: 10, 12, 12, 16, 20\n2) MEDIA: (10 + 12 + 12 + 16 + 20) / 5 = 70 / 5 = 14\n3) MEDIANA: El dato justo del centro (posición 3) es 12\n4) MODA: El valor que más se repite es 12."
+    },
+
+    // 12. Desviación Estándar
+    {
+      theme: "Medidas de Dispersión (Desviación Estándar)",
+      question: "12. 6 trabajadores vendieron: 7, 12, 15, 10, 5, 11 de pólizas (Media x̄ = 10). Determine la desviación estándar (σ).",
+      options: ["a) 64", "b) 3.26", "c) 10.66", "d) 113.6"],
+      correct: 1,
+      procedure: "1) Calcular diferencias respecto a la media (xi - 10) y elevar al cuadrado:\n   • (7 - 10)² = (-3)² = 9\n   • (12 - 10)² = (2)² = 4\n   • (15 - 10)² = (5)² = 25\n   • (10 - 10)² = (0)² = 0\n   • (5 - 10)² = (-5)² = 25\n   • (11 - 10)² = (1)² = 1\n2) Sumatoria Σ(xi - x̄)² = 9 + 4 + 25 + 0 + 25 + 1 = 64\n3) Aplicar fórmula de Varianza: 64 / 6 = 10.666...\n4) Desviación Estándar (σ) = √(10.666...) ≈ 3.26."
+    },
+    {
+      theme: "Medidas de Dispersión (Desviación Estándar)",
+      question: "12 (Var. 2). En el ejercicio anterior de pólizas, ¿cuál es el valor de la Varianza (antes de aplicar la raíz cuadrada)?",
+      options: ["a) 3.26", "b) 64", "c) 10.66", "d) 12.5"],
+      correct: 2,
+      procedure: "1) La suma de cuadrados Σ(xi - x̄)² = 64.\n2) Dividiendo entre n = 6 se obtiene la Varianza (σ²):\n   σ² = 64 / 6 = 10.666...\n3) Al sacar raíz de 10.666 se obtiene la desviación estándar (3.26)."
+    },
+    {
+      theme: "Medidas de Dispersión (Desviación Estándar)",
+      question: "12 (Var. 3). Para una muestra con datos cuya suma de diferencias al cuadrado Σ(xi - x̄)² = 100 y n = 4 datos, ¿cuál es su desviación estándar?",
+      options: ["a) 25", "b) 5", "c) 10", "d) 100"],
+      correct: 1,
+      procedure: "1) Varianza = Σ(xi - x̄)² / n = 100 / 4 = 25.\n2) Desviación Estándar σ = √25 = 5."
+    },
+
+    // 13. Suma y Resta de Polinomios
+    {
+      theme: "Operaciones Algebraicas (Suma de Polinomios)",
+      question: "13. Realiza la siguiente suma de polinomios: (8m² - 9mn + 24) + (12mn - 13 - 12m²)",
+      options: [
+        "a) -4m² + 3mn + 11",
+        "b) 20m² + 17mn + 11",
+        "c) 4m² - 3mn - 11",
+        "d) -20m² + 17mn - 11"
+      ],
+      correct: 0,
+      procedure: "1) Eliminar paréntesis conservando signos:\n   8m² - 9mn + 24 + 12mn - 13 - 12m²\n2) Agrupar términos semejantes:\n   • Para m²: 8m² - 12m² = -4m²\n   • Para mn: -9mn + 12mn = +3mn\n   • Constantes: 24 - 13 = +11\n3) Resultado final: -4m² + 3mn + 11."
+    },
+    {
+      theme: "Operaciones Algebraicas (Resta de Polinomios)",
+      question: "13 (Var. 2). Resuelve la siguiente resta de polinomios: (8m² - 9mn + 24) - (12mn - 13 - 12m²)",
+      options: [
+        "a) -4m² + 3mn + 11",
+        "b) 20m² - 21mn + 37",
+        "c) 4m² - 21mn - 11",
+        "d) -20m² + 3mn - 11"
+      ],
+      correct: 1,
+      procedure: "1) El signo menos antes del segundo paréntesis cambia TODOS sus signos:\n   (8m² - 9mn + 24) - 12mn + 13 + 12m²\n2) Agrupar términos semejantes:\n   • Para m²: 8m² + 12m² = 20m²\n   • Para mn: -9mn - 12mn = -21mn\n   • Constantes: 24 + 13 = +37\n3) Resultado final: 20m² - 21mn + 37."
+    },
+    {
+      theme: "Operaciones Algebraicas (Suma de Polinomios)",
+      question: "13 (Var. 3). Suma los polinomios: (5x² + 3x - 6) + (2x² - 8x + 10)",
+      options: [
+        "a) 7x² - 5x + 4",
+        "b) 7x² + 11x + 16",
+        "c) 3x² - 5x - 4",
+        "d) 7x² + 5x + 4"
+      ],
+      correct: 0,
+      procedure: "1) Agrupar términos semejantes:\n   • x²: 5x² + 2x² = 7x²\n   • x: 3x - 8x = -5x\n   • Números: -6 + 10 = +4\n2) Resultado: 7x² - 5x + 4."
+    },
+
+    // 14. Productos Notables (Binomio al Cuadrado)
+    {
+      theme: "Productos Notables (Binomio al Cuadrado)",
+      question: "14. Desarrolla el siguiente producto notable: (3x - 8)²",
+      options: ["a) 9x² - 48x + 64", "b) 9x² + 24x + 64", "c) 9x² - 64", "d) 9x² + 48x - 64"],
+      correct: 0,
+      procedure: "Regla del Binomio al Cuadrado: (a - b)² = a² - 2ab + b²\n1) Cuadrado del primer término: (3x)² = 9x²\n2) Doble del primero por el segundo: - 2(3x)(8) = -48x\n3) Cuadrado del segundo término: (+8)² = +64\nResultado final: 9x² - 48x + 64."
+    },
+    {
+      theme: "Productos Notables (Binomio al Cuadrado)",
+      question: "14 (Var. 2). Desarrolla el siguiente producto notable: (5x - 4)²",
+      options: [
+        "a) 25x² - 40x + 16",
+        "b) 25x² + 40x - 16",
+        "c) 25x² - 16",
+        "d) 25x² + 16"
+      ],
+      correct: 0,
+      procedure: "Aplicando (a - b)² = a² - 2ab + b²:\n1) Primer término al cuadrado: (5x)² = 25x²\n2) Menos el doble producto: - 2(5x)(4) = -40x\n3) Segundo término al cuadrado: (-4)² = +16\nResultado final: 25x² - 40x + 16."
+    },
+    {
+      theme: "Productos Notables (Binomio al Cuadrado)",
+      question: "14 (Var. 3). Desarrolla el binomio al cuadrado: (2x + 6)²",
+      options: [
+        "a) 4x² + 24x + 36",
+        "b) 4x² + 12x + 36",
+        "c) 4x² + 36",
+        "d) 2x² + 12x + 12"
+      ],
+      correct: 0,
+      procedure: "Aplicando (a + b)² = a² + 2ab + b²:\n1) (2x)² = 4x²\n2) + 2(2x)(6) = +24x\n3) (+6)² = +36\nResultado: 4x² + 24x + 36."
+    },
+
+    // 15. División de Polinomios
+    {
+      theme: "Operaciones Algebraicas (División de Polinomios)",
+      question: "15. Realiza la siguiente división: (x² + 11x + 10) / (x + 1)",
+      options: [
+        "a) 2x + 10, residuo = 1",
+        "b) 2x - 10, residuo = 2",
+        "c) x + 10, residuo = 0",
+        "d) x + 1, residuo = 0"
+      ],
+      correct: 2,
+      procedure: "Método por Factorización:\n1) Factorizar el trinomio del numerador (x² + 11x + 10):\n   Buscamos dos números que multiplicados den 10 y sumados den 11 -> (10 y 1).\n   x² + 11x + 10 = (x + 1)(x + 10)\n2) Sustituir en la división:\n   [(x + 1)(x + 10)] / (x + 1)\n3) Cancelar el factor común (x + 1):\n   = x + 10 con un residuo de 0."
+    },
+    {
+      theme: "Operaciones Algebraicas (División de Polinomios)",
+      question: "15 (Var. 2). Realiza la siguiente división: (x² + 4x + 3) / (x + 3)",
+      options: [
+        "a) 3x - 1, residuo = 2",
+        "b) x + 1, residuo = 0",
+        "c) 3x + 3, residuo = 1",
+        "d) x - 1, residuo = 0"
+      ],
+      correct: 1,
+      procedure: "Método por Factorización:\n1) Factorizar numerador (x² + 4x + 3):\n   Dos números que multiplicados den 3 y sumados den 4 -> (3 y 1).\n   x² + 4x + 3 = (x + 3)(x + 1)\n2) División:\n   [(x + 3)(x + 1)] / (x + 3)\n3) Cancelar (x + 3):\n   = x + 1 con residuo = 0."
+    },
+    {
+      theme: "Operaciones Algebraicas (División de Polinomios)",
+      question: "15 (Var. 3). Realiza la siguiente división: (x² + 7x + 12) / (x + 4)",
+      options: [
+        "a) x + 3, residuo = 0",
+        "b) x - 3, residuo = 0",
+        "c) x + 4, residuo = 1",
+        "d) 2x + 3, residuo = 0"
+      ],
+      correct: 0,
+      procedure: "1) Factorizar numerador (x² + 7x + 12):\n   Números que multiplicados den 12 y sumados den 7 -> (4 y 3).\n   (x + 4)(x + 3)\n2) Divisió: [(x + 4)(x + 3)] / (x + 4) = x + 3.\n3) Resultado: x + 3 con residuo = 0."
+    }
+  ];
+
+  let currentIndex = 0;
+  let selectedAnswers = new Array(exercises.length).fill(null);
+
+  function initApp() {
+    populateSelect();
+    loadExercise(0);
+  }
+
+  function populateSelect() {
+    const select = document.getElementById("exercise-select");
+    select.innerHTML = "";
+    exercises.forEach((ex, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = `Ej. ${index + 1}: ${ex.theme}`;
+      select.appendChild(option);
+    });
+  }
+
+  function loadExercise(index) {
+    currentIndex = index;
+    const data = exercises[currentIndex];
+
+    document.getElementById("exercise-select").value = currentIndex;
+    document.getElementById("counter-text").textContent = `Ejercicio ${currentIndex + 1} de ${exercises.length}`;
+    document.getElementById("theme-badge").textContent = `TEMA: ${data.theme.toUpperCase()}`;
+    document.getElementById("question-text").textContent = data.question;
+
+    const optionsContainer = document.getElementById("options-container");
+    optionsContainer.innerHTML = "";
+
+    const userChoice = selectedAnswers[currentIndex];
+
+    data.options.forEach((optText, optIdx) => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn";
+      btn.textContent = optText;
+
+      if (userChoice !== null) {
+        if (optIdx === data.correct) {
+          btn.classList.add("correct");
+        }
+        if (userChoice === optIdx && userChoice !== data.correct) {
+          btn.classList.add("incorrect");
+        }
+      }
+
+      btn.onclick = () => selectOption(optIdx);
+      optionsContainer.appendChild(btn);
+    });
+
+    const procedureBox = document.getElementById("procedure-box");
+    const procedureContent = document.getElementById("procedure-content");
+
+    if (userChoice !== null) {
+      procedureContent.textContent = data.procedure;
+      procedureBox.style.display = "block";
+    } else {
+      procedureBox.style.display = "none";
+    }
+
+    document.getElementById("btn-prev").disabled = currentIndex === 0;
+    document.getElementById("btn-next").disabled = currentIndex === exercises.length - 1;
+  }
+
+  function selectOption(optionIndex) {
+    selectedAnswers[currentIndex] = optionIndex;
+    loadExercise(currentIndex);
+  }
+
+  function navigate(direction) {
+    const newIndex = currentIndex + direction;
+    if (newIndex >= 0 && newIndex < exercises.length) {
+      loadExercise(newIndex);
+    }
+  }
+
+  function jumpToExercise(index) {
+    loadExercise(parseInt(index, 10));
+  }
+
+  window.onload = initApp;
+</script>
+
+</body>
+</html>
